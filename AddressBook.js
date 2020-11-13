@@ -230,12 +230,22 @@
         console.log("Total number of contacts in city : "+ cityName + " is equal to : " + countByCity);
     }
 
+    //UC 11
+    //sort contact by its name
+    let sortContactByName = () => {
+        console.log("Contacts sorted : ")
+        return ContactsArray.sort((a, b) => {
+            return ((a.firstName > b.firstName) ? 1 : -1)
+        });
+    }
+
   console.log("Welcome To AddressBook Program through JavaScript");
     let choice = 0;
     do {
         console.log("0 : Exit \n1 : Add contact \n2 : Edit a Contact \n3 : View all Contacts\n4 : Delete contact ");
         console.log("5 : Number of contacts \n6 : Search contacts in State \n7 : Search contacts in City ");
         console.log("8 : View Persons by State \n9 : View Persons by City\n10 : Count by state \n11 : Count by city");
+        console.log("12 : Sort by name");
         choice = prompt("Enter your choice : ");
         switch (parseInt(choice)) {  
             case 0:
@@ -273,6 +283,9 @@
                 break;
             case 11:
                 countOfContactsByCity();
+                break;
+            case 12:
+                sortContactByName();
                 break;
             default:
                 console.log("WRONG CHOICE! Try again...");
