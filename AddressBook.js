@@ -217,12 +217,25 @@
         else console.log("No contacts found for given city");
     }
 
+    //UC 10
+    //Count of contacts by state
+    let countOfContactsByState = () => {
+        let stateName = prompt("Enter state name: ");
+        let countByState = ContactsArray.filter(contact => contact.state == stateName).reduce((totalCount, contact) => totalCount += 1, 0);
+        console.log("Total number of contacts in state : "+stateName + " is equal to : " + countByState);
+    }
+    let countOfContactsByCity = () => {
+        let cityName = prompt("Enter city name: ");
+        let countByCity = ContactsArray.filter(contact => contact.city == city).reduce((totalCount, contact) => totalCount += 1, 0);
+        console.log("Total number of contacts in city : "+ cityName + " is equal to : " + countByCity);
+    }
+
   console.log("Welcome To AddressBook Program through JavaScript");
     let choice = 0;
     do {
         console.log("0 : Exit \n1 : Add contact \n2 : Edit a Contact \n3 : View all Contacts\n4 : Delete contact ");
         console.log("5 : Number of contacts \n6 : Search contacts in State \n7 : Search contacts in City ");
-        console.log("8 : View Persons by State \n9 : View Persons by City");
+        console.log("8 : View Persons by State \n9 : View Persons by City\n10 : Count by state \n11 : Count by city");
         choice = prompt("Enter your choice : ");
         switch (parseInt(choice)) {  
             case 0:
@@ -254,6 +267,12 @@
                 break;
             case 9:
                 veiwContactInCity();
+                break;
+            case 10:
+                countOfContactsByState();
+                break;
+            case 11:
+                countOfContactsByCity();
                 break;
             default:
                 console.log("WRONG CHOICE! Try again...");
