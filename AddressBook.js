@@ -239,13 +239,36 @@
         });
     }
 
+    //UC 12
+    //sort contact by its state
+    let sortContactByState = () => {
+        console.log("Contacts sorted : ")
+        return ContactsArray.sort((a, b) => {
+            return ((a.state > b.state) ? 1 : -1)
+        });
+    }
+    //sort contact by its city
+    let sortContactByCity = () => {
+        console.log("Contacts sorted : ")
+        return ContactsArray.sort((a, b) => {
+            return ((a.city > b.city) ? 1 : -1)
+        });
+    }
+    //sort contact by its zip
+    let sortContactByZip = () => {
+        console.log("Contacts sorted : ")
+        return ContactsArray.sort((a, b) => {
+            return ((a.zip > b.zip) ? 1 : -1)
+        });
+    }
+
   console.log("Welcome To AddressBook Program through JavaScript");
     let choice = 0;
     do {
         console.log("0 : Exit \n1 : Add contact \n2 : Edit a Contact \n3 : View all Contacts\n4 : Delete contact ");
         console.log("5 : Number of contacts \n6 : Search contacts in State \n7 : Search contacts in City ");
         console.log("8 : View Persons by State \n9 : View Persons by City\n10 : Count by state \n11 : Count by city");
-        console.log("12 : Sort by name");
+        console.log("12 : Sort by name \n13 : Sort by state \n14 : Sort by city \n15 : Sort by zip");
         choice = prompt("Enter your choice : ");
         switch (parseInt(choice)) {  
             case 0:
@@ -286,6 +309,15 @@
                 break;
             case 12:
                 sortContactByName();
+                break;
+            case 13:
+                sortContactByState();
+                break;
+            case 14:
+                sortContactByCity();
+                break;
+            case 15:
+                sortContactByZip();
                 break;
             default:
                 console.log("WRONG CHOICE! Try again...");
