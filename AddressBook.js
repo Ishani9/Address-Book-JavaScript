@@ -190,24 +190,39 @@
     let searchContactInState = () => {
         let stateName = prompt("Enter state name : ");
         let firstName= prompt("Enter contact first name : ")
-        let serachcontactByState = ContactsArray.filter(contact => contact.state == stateName).find(contact => contact.firstName == firstName);
-        console.log("First contact found in given state : \n" +serachcontactByState);
+        let searchcontactByState = ContactsArray.filter(contact => contact.state == stateName).find(contact => contact.firstName == firstName);
+        console.log("First contact found in given state : \n" +searchcontactByState);
     }
     //Searching a given contact in City
     let searchContactInCity = () => {
         let cityName = prompt("Enter City name: ");
         let firstName= prompt("Enter contact first name: ")
-        let serachcontactByCity = ContactsArray.filter(contact => contact.city == cityName).find(contact => contact.firstName == firstName);
-        console.log("First contact found in given cityName : \n" +searchContactInCity);
+        let searchcontactByCity = ContactsArray.filter(contact => contact.city == cityName).find(contact => contact.firstName == firstName);
+        console.log("First contact found in given city : \n" +searchcontactByCity);
     }
 
+    //UC 9
+    //View given contacts in State
+    let veiwContactInState = () => {
+        let stateName = prompt("Enter state name: ");
+        let viewcontactsByState = ContactsArray.filter(contact => contact.state == stateName).map(contact=> contact);
+        if (viewcontactsByState.length > 0) console.log("Contacts found in given state : \n" + viewcontactsByState.toString());
+        else console.log("No contacts found for given state");
+    }
+    //View given contacts in City
+    let veiwContactInCity = () => {
+        let cityName = prompt("Enter City name: ");
+        let viewcontactsByCity = ContactsArray.filter(contact => contact.city == cityName).map(contact=> contact);
+        if (viewcontactsByCity.length > 0) console.log("Contacts found in given City : \n" + viewcontactsByCity.toString());
+        else console.log("No contacts found for given city");
+    }
 
   console.log("Welcome To AddressBook Program through JavaScript");
     let choice = 0;
-    //calling addContactsToAddressBook method to add new contact to Array
     do {
         console.log("0 : Exit \n1 : Add contact \n2 : Edit a Contact \n3 : View all Contacts\n4 : Delete contact ");
         console.log("5 : Number of contacts \n6 : Search contacts in State \n7 : Search contacts in City ");
+        console.log("8 : View Persons by State \n9 : View Persons by City");
         choice = prompt("Enter your choice : ");
         switch (parseInt(choice)) {  
             case 0:
@@ -233,6 +248,12 @@
                 break;
              case 7:
                 searchContactInCity();
+                break;
+            case 8:
+                veiwContactInState();
+                break;
+            case 9:
+                veiwContactInCity();
                 break;
             default:
                 console.log("WRONG CHOICE! Try again...");
