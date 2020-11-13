@@ -1,6 +1,6 @@
 {
     const prompt = require('prompt-sync')();
-    
+
     //Regex patterns
     const NAME_REGEX = RegExp('^[A-Z]{1}[a-z]{2,}$');
     const ADDRESS_REGEX = RegExp('^[A-Za-z]{4,}$');
@@ -131,6 +131,7 @@
   }
   //view All Contacts available in Array
   let viewContacts = () => {
+    console.log("Total contacts in array are: " + ContactsArray.length);
     console.log(ContactsArray.toString()+ "\n");
   }
 
@@ -153,11 +154,31 @@
     }
   }
 
+  //UC 5
+  let deleteContact = () => {
+    console.log("Total contacts in array are: " + ContactsArray.length);
+    if (ContactsArray.length == 0) {
+        console.log("No contacts Available in Array");
+        return;
+    }
+    let firstNamedelete = prompt("Enter the first name whose contact you want to delete: ");
+    let check = ContactsArray.find((contact) => contact.firstName == firstNamedelete);
+    if (check == undefined) {
+        console.log("No contact with given first name");
+        return;
+    }
+    else {
+        //Filtering out contacts whose doesnt matches with given FirstName
+        ContactsArray = ContactsArray.filter((contact) => contact.firstName != firstNamedelete);
+    }
+}
+
   console.log("Welcome To AddressBook Program through JavaScript");
     let choice = 0;
     //calling addContactsToAddressBook method to add new contact to Array
     do {
-        choice = prompt("Enter \n1 : Add contact \n2 : Edit a Contact \n3 : View all Contacts \n0 : Exit: ");
+        console.log("0 : Exit \n1 : Add contact \n2 : Edit a Contact \n3 : View all Contacts\n4: Delete contact ");
+        choice = prompt("Enter your choice : ");
         switch (parseInt(choice)) {  
           case 0:
                 console.log("EXITING ... ");
@@ -171,6 +192,8 @@
             case 3:
                 viewContacts();
                 break;
+            case 4:
+                deleteContact();
             default:
                 console.log("WRONG CHOICE! Try again...");
                 break;
