@@ -105,15 +105,20 @@
         }
     }
   
-     //UC 3
+     //UC 3 and 7
 
   //Create an array to store contacts
   let ContactsArray = new Array();
 
-  //Adding a new contact to Contact array
+  //Adding a new contact to Contact array and check duplicate entry before adding to array
   let addContactsToAddressBook = () => {
       let firstName = prompt("Enter First Name: ");
       let lastName = prompt("Enter Last Name: ");
+      
+      if (ContactsArray.find((contact) => (contact.firstName==firstName && contact.lastName==lastName))) {
+        console.log("Warning!!! Given contact is already present in address book");
+        return;
+        }
       let address = prompt("Enter Address: ");
       let city = prompt("Enter City Name: ");
       let state = prompt("Enter State Name: ");
@@ -124,11 +129,12 @@
           let contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, emailId);
           ContactsArray.push(contact);
           console.log("Contact Added successfully to array : \n " + contact.toString());
-      } 
+        } 
       catch (e) {
           console.error(e);
-      }
-  }
+        }
+    }
+    
   //view All Contacts available in Array
   let viewContacts = () => {
     console.log("Total contacts in array are: " + ContactsArray.length);
