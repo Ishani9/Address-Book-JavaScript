@@ -134,7 +134,7 @@
           console.error(e);
         }
     }
-    
+
   //view All Contacts available in Array
   let viewContacts = () => {
     console.log("Total contacts in array are: " + ContactsArray.length);
@@ -185,12 +185,29 @@
         console.log("Total Number of contacts are : " +ContactsArray.reduce((totalCount, contact) => totalCount += 1, 0));
     }
 
+    //UC 8
+    //Searching a given contact in State
+    let searchContactInState = () => {
+        let stateName = prompt("Enter state name : ");
+        let firstName= prompt("Enter contact first name : ")
+        let serachcontactByState = ContactsArray.filter(contact => contact.state == stateName).find(contact => contact.firstName == firstName);
+        console.log("First contact found in given state : \n" +serachcontactByState);
+    }
+    //Searching a given contact in City
+    let searchContactInCity = () => {
+        let cityName = prompt("Enter City name: ");
+        let firstName= prompt("Enter contact first name: ")
+        let serachcontactByCity = ContactsArray.filter(contact => contact.city == cityName).find(contact => contact.firstName == firstName);
+        console.log("First contact found in given cityName : \n" +searchContactInCity);
+    }
+
+
   console.log("Welcome To AddressBook Program through JavaScript");
     let choice = 0;
     //calling addContactsToAddressBook method to add new contact to Array
     do {
-        console.log("0 : Exit \n1 : Add contact \n2 : Edit a Contact \n3 : View all Contacts\n4: Delete contact ");
-        console.log("5 : Number of contacts");
+        console.log("0 : Exit \n1 : Add contact \n2 : Edit a Contact \n3 : View all Contacts\n4 : Delete contact ");
+        console.log("5 : Number of contacts \n6 : Search contacts in State \n7 : Search contacts in City ");
         choice = prompt("Enter your choice : ");
         switch (parseInt(choice)) {  
             case 0:
@@ -210,6 +227,12 @@
                 break;
             case 5:
                 countOfContacts();
+                break;
+             case 6:
+                searchContactInState();
+                break;
+             case 7:
+                searchContactInCity();
                 break;
             default:
                 console.log("WRONG CHOICE! Try again...");
