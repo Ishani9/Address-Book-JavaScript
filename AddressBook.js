@@ -103,11 +103,37 @@
         }
     }
   
-    try{
-      let contact = new Contact("Ishani", "Mhatre", "IN", "MUMBAI", "MH", 400001, 1122334455, "isss@gmail.com");
-      console.log((contact.toString()));
-    }
-     catch (error) {
-      console.error(error);
-    }
+     //UC 3
+
+  //Create an array to store contacts
+  let ContactsArray = new Array();
+
+  //Adding a new contact to Contact array
+  let addContactsToAddressBook = () => {
+      let firstName = prompt("Enter First Name: ");
+      let lastName = prompt("Enter Last Name: ");
+      let address = prompt("Enter Address: ");
+      let city = prompt("Enter City Name: ");
+      let state = prompt("Enter State Name: ");
+      let zip = prompt("Enter Zip Code: ");
+      let phoneNumber = prompt("Enter Phone Number: ");
+      let emailId = prompt("Enter Email id: ");
+      try {
+          let contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, emailId);
+          ContactsArray.push(contact);
+          console.log("Contact Added successfully to array : \n " + contact.toString());
+      } 
+      catch (e) {
+          console.error(e);
+      }
+  }
+  console.log("Welcome To AddressBook Program through JavaScript");
+    let choice = 0;
+    //calling addContactsToAddressBook method to add new contact to Array
+    do {
+        choice = prompt("Enter \n1 : Add contact \n0 : Exit: \n");
+        if (choice == 1) {
+            addContactsToAddressBook();
+        }
+    } while (choice != 0);
 }
