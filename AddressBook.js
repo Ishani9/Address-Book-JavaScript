@@ -160,30 +160,37 @@
     if (ContactsArray.length == 0) {
         console.log("No contacts Available in Array");
         return;
-    }
+        }
     let firstNamedelete = prompt("Enter the first name whose contact you want to delete: ");
     let check = ContactsArray.find((contact) => contact.firstName == firstNamedelete);
     if (check == undefined) {
         console.log("No contact with given first name");
         return;
-    }
+        }
     else {
         //Filtering out contacts whose doesnt matches with given FirstName
         ContactsArray = ContactsArray.filter((contact) => contact.firstName != firstNamedelete);
+        }
     }
-}
+
+    //UC 6
+    //Find total number of contacts
+    let countOfContacts = () => {
+        console.log("Total Number of contacts are : " +ContactsArray.reduce((totalCount, contact) => totalCount += 1, 0));
+    }
 
   console.log("Welcome To AddressBook Program through JavaScript");
     let choice = 0;
     //calling addContactsToAddressBook method to add new contact to Array
     do {
         console.log("0 : Exit \n1 : Add contact \n2 : Edit a Contact \n3 : View all Contacts\n4: Delete contact ");
+        console.log("5 : Number of contacts");
         choice = prompt("Enter your choice : ");
         switch (parseInt(choice)) {  
-          case 0:
+            case 0:
                 console.log("EXITING ... ");
                 break;
-          case 1:
+             case 1:
                 addContactsToAddressBook();
                 break;
             case 2:
@@ -194,6 +201,10 @@
                 break;
             case 4:
                 deleteContact();
+                break;
+            case 5:
+                countOfContacts();
+                break;
             default:
                 console.log("WRONG CHOICE! Try again...");
                 break;
